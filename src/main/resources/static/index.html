@@ -4,6 +4,7 @@
 </head>
 
 <h1/>Schaaktoernooi<h1/>
+<body style="background-color:powderblue;">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -11,32 +12,54 @@
 <div> Vul hieronder de persoonsgegevens in:</div>
 
 <button> voeg 1 schaker toe</button>
-<input type="tekst" id="voornaam" value="voer je voornaam in">
+<input type="text" id="voornaam" value="voer je voornaam in">
+<div id="voornaam"></div>
 <input type="text" id=tussenvoegsel = value="tussenvoegsel" >
 <input type="text" id=achternaam = value="achternaam" >
 <input type="text" id=geboortedatum = value="geboortedatum" >
 <input type="text" id=wins = value="wins" >
 <input type="text" id=ties = value="ties" >
-<input type="text"losses = value="verloren wedstrijden">
-<input type="text" id=verloren wedstrijden = value="losses" >
+<input type="text" id=losses = value="losses">
 
 
-
-<div> RAADPLEEG alle schakers </div>
+<button id="toonalleschakers "> Toon alle schakers</button>
 
 
 <script>
-    function ophaalfunctie(antwoordSchakersbase){
-      $('#alleschepentabel').html(antwoordSchakersbase);
+    $(document).on('click', '#voornaam', function(){
+            $.ajax({
+                type: "get",
+                url: "/nieuwschaker",
+                success: function(result){
+                    returnfunctie(result);
+                }
+            });
+    });
+    $(document).on('click','#toonalleschakers', function(){
+      $.ajax({
+      type:"get",
+      url:"/geefalleschakers",
+      success: function(result){
+       console.log(result);
+       ophaalfunctie(result);
+      }
+     });
+    });
+
+    function returnfunctie(antwoordserver){
+       $('#voornaam').html(antwoordserver.naam);
+
+       function ophaalfunctie(antwoordschakersbase){
+      $('#alleschakersbase').html(antwoordschakersbase);
       var opbouwString = "<table border=1>";
-      for( i = 0 ; i < antwoordserverSchakersbase.voornaam ; i++ ){
-      for( i = 0 ; i < antwoordserverSchakersbase.tussenvoegsel
-      for( i = 0 ; i < antwoordserverSchakersbase.geboortedatum
-      for( i = 0 ; i < antwoordserverSchakersbase.wedstrijden
-      for( i = 0 ; i < antwoordserverSchakersbasewins.wins
-      for( i = 0 ; i < antwoordserverSchakersbaseties.ties
-      for( i = 0 ; i < antwoordserverSchakersbaselosses.losses
-       opbouwString += "<tr><td>"+antwoordserverSchakersbase[i].naam+"</td></tr>";
+      for( i = 0 ; i < antwoordserverschakersbase.voornaam ; i++ ){
+      for( i = 0 ; i < antwoordserverschakersbase.tussenvoegsel
+      for( i = 0 ; i < antwoordserverschakersbase.geboortedatum
+      for( i = 0 ; i < antwoordserverschakersbase.wedstrijden
+      for( i = 0 ; i < antwoordserverschakersbasewins.wins
+      for( i = 0 ; i < antwoordserverschakersbaseties.ties
+      for( i = 0 ; i < antwoordserverschakersbaselosses.losses
+       opbouwString += "<tr><td>"+antwoordserverschakersbase[i].naam+"</td></tr>";
       }
       opbouwString += "</table>";
-      document.getElementById('alleschepentabel').innerHTML = opbouwString;
+      document.getElementById('schakersbase').innerHTML = opbouwString;
