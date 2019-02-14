@@ -3,22 +3,49 @@
     <title> Schaaktoernooi</title>
 </head>
 
-
 <h1/>Schaaktoernooi<h1/>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
 <div> Vul hieronder de persoonsgegevens in:</div>
-        <input type="text" voornaam = value=voornaam>
-        <input type="text" tussenvoegsel = value="tussenvoegsel">
-        <input type="text" achternaam = value="tussenvoegsel">
+
+<button id="voornaam" > voeg 1 schaker toe</button>
+<input type="tekst" id="voornaam" value="voer je voornaam in">
+<input type="text" tussenvoegsel = value="tussenvoegsel">
+
+
+    <div id"tussenvoegsel"></div>
+<input type="text" id=tussenvoegsel = value="tussemvoegsel" >
+        <input type="text" achternaam = value="achternaam">
+<input type="text" id=achternaam = value="achternaam" >
+        <input type="text"date = value="Date">
+<input type="text" id=geboortedatum = value="geboortedatum" >
         <input type="text"geboortedatum = value="geboortedatum">
-        <input type="text"wins = value="gewonnen wedstrijden">
-        <input type="text"ties = value="gelijkspelen">
+<input type="text" id=wins = value="wins" >
+        <input type="text"wins = value="wins">
+<input type="text" id=ties = value="ties" >
         <input type="text"losses = value="verloren wedstrijden">
+<input type="text" id=verloren wedstrijden = value="losses" >
 
         <button>vul een schaker in <button>
 
 
-<div> RAADPLEEG alle schakers <div
+<div> RAADPLEEG alle schakers </div>
+
+
+<script>
+    function ophaalfunctie(antwoordSchakersbase){
+      $('#alleschepentabel').html(antwoordSchakersbase);
+      var opbouwString = "<table border=1>";
+      for( i = 0 ; i < antwoordserverSchakersbase.voornaam ; i++ ){
+      for( i = 0 ; i < antwoordserverSchakersbase.tussenvoegsel
+      for( i = 0 ; i < antwoordserverSchakersbase.geboortedatum
+      for( i = 0 ; i < antwoordserverSchakersbase.wedstrijden
+      for( i = 0 ; i < antwoordserverSchakersbasewins.wins
+      for( i = 0 ; i < antwoordserverSchakersbaseties.ties
+      for( i = 0 ; i < antwoordserverSchakersbaselosses.losses
+       opbouwString += "<tr><td>"+antwoordserverSchakersbase[i].naam+"</td></tr>";
+      }
+      opbouwString += "</table>";
+      document.getElementById('alleschepentabel').innerHTML = opbouwString;
