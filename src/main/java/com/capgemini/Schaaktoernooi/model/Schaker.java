@@ -1,4 +1,4 @@
-package com.capgemini.Schaaktournooi.model;
+package com.capgemini.Schaaktoernooi.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

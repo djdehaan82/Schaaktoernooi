@@ -1,7 +1,7 @@
-package com.capgemini.Schaaktournooi.Api;
+package com.capgemini.Schaaktoernooi.Api;
 
-import com.capgemini.Schaaktournooi.controller.Schaakrepository;
-import com.capgemini.Schaaktournooi.model.Schaker;
+import com.capgemini.Schaaktoernooi.controller.Schaakrepository;
+import com.capgemini.Schaaktoernooi.model.Schaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,11 +14,13 @@ public class SchakerEndpoint {
     private Schaakrepository mijnSchaakrepository;
 
     @GetMapping("nieuweSchaker/{Schaaknaam}")
-    public Schaker nieuwSchakerMaken(@PathVariable String Schaaknaam){
-        System.out.println("go"+Schaaknaam);
-        Schaker deSchaker = new Schaker() ;
-        deSchaker.achternaam= Schaaknaam;
+    public Schaker nieuwSchakerMaken(@PathVariable String Schaaknaam) {
+        System.out.println("go" + Schaaknaam);
+        Schaker deSchaker = new Schaker();
+        deSchaker.achternaam = Schaaknaam;
         Schaker grootMeester = mijnSchaakrepository.save(deSchaker);
+        return grootMeester;
+    }
 
 
     @GetMapping ("geefalleschakers")

@@ -1,4 +1,4 @@
-package com.capgemini.Schaaktournooi;
+package com.capgemini.Schaaktoernooi;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

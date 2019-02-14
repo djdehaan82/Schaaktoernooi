@@ -1,4 +1,4 @@
-package com.capgemini.Schaaktournooi;
+package com.capgemini.Schaaktoernooi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
