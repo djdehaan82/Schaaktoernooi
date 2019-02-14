@@ -1,6 +1,6 @@
 package com.capgemini.Schaaktoernooi.Api;
 
-import com.capgemini.Schaaktoernooi.controller.Schaakrepository;
+import com.capgemini.Schaaktoernooi.controller.Schaakrepository
 import com.capgemini.Schaaktoernooi.model.Schaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 
-public class SchakerEndpoint {
-    @Autowired
-    private Schaakrepository mijnSchaakrepository;
+public class SchakerEndpoint
+{@Autowired
+private Schaakrepository mijnSchaakrepository;
 
-    @GetMapping ('toevoegen')
+    @GetMapping ("toevoegen")
     public Iterable<Schaker> toevoegen) {
-        return mijnSchaakrepository;
-
+        return mijnSchaakrepository.findAll();
     }
 
+
     @PostMapping("toevoegen")
-    public String Toevoegen (@RequestBody Schaker schaker) {
+    public String toevoegen (@RequestBody Schaker schaker) {
     mijnSchaakrepository.save(schaker);
     return "deelnemer opgeslagen"; }
 }

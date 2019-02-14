@@ -1,7 +1,6 @@
 package com.capgemini.Schaaktoernooi.model;
 
 import com.sun.xml.internal.bind.v2.model.core.ID;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
