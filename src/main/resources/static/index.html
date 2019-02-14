@@ -5,61 +5,57 @@
 
 <h1/>Schaaktoernooi<h1/>
 <body style="background-color:powderblue;">
+<!DOCTYPE html>
 
+<button id="tabelschakers"> Toon Alle Schakers</button>
+<div id="tonen"></div>
+
+<input type="text" id="voornaam"         value= "voer je voornaam in">
+<input type="text" id="tussenvoegsel"    value="tussenvoegsel" >
+<input type="text" id="achternaam"       value="achternaam" >
+<input type="text" id="geboortedatum"    value="geboortedatum" >
+<input type="text" id="wins"             value="gewonnen" >
+<input type="text" id="ties"             value="gelijk" >
+<input type="text" id="losses"           value= "verloren">
+
+<input type="button" onclick= "opslaandatabase()" value=" voeg schaker toe ">
+</body>
+</html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-<div> Vul hieronder de persoonsgegevens in:</div>
-
-<button> voeg 1 schaker toe</button>
-<input type="text" id="voornaam" value="voer je voornaam in">
-<div id="voornaam"></div>
-<input type="text" id=tussenvoegsel = value="tussenvoegsel" >
-<input type="text" id=achternaam = value="achternaam" >
-<input type="text" id=geboortedatum = value="geboortedatum" >
-<input type="text" id=wins = value="wins" >
-<input type="text" id=ties = value="ties" >
-<input type="text" id=losses = value="losses">
-
-
-<button id="toonalleschakers "> Toon alle schakers</button>
-
-
 <script>
-    $(document).on('click', '#voornaam', function(){
-            $.ajax({
-                type: "get",
-                url: "/nieuwschaker",
-                success: function(result){
-                    returnfunctie(result);
-                }
-            });
-    });
-    $(document).on('click','#toonalleschakers', function(){
-      $.ajax({
-      type:"get",
-      url:"/geefalleschakers",
-      success: function(result){
-       console.log(result);
-       ophaalfunctie(result);
-      }
-     });
-    });
+function opslaandatabase(){var dto = {};
+    dto.voornaam = $('#voornaam').val();
+    dto.tussenvoegsel = $('#tussenvoegsel').val()
+    dto.achternaam = $('#achternaam').val();
+    dto = JSON.stringify(dto);
+	$.ajax({ type: "post",
+	        url: "/toevoegen",
+	        data: dto,
+	        contentType : "application/json",
+	        success: function(result){
+	        console.log('gelukt');
+	                }
+	        });
 
-    function returnfunctie(antwoordserver){
-       $('#voornaam').html(antwoordserver.naam);
+	    }
 
-       function ophaalfunctie(antwoordschakersbase){
-      $('#alleschakersbase').html(antwoordschakersbase);
-      var opbouwString = "<table border=1>";
-      for( i = 0 ; i < antwoordserverschakersbase.voornaam ; i++ ){
-      for( i = 0 ; i < antwoordserverschakersbase.tussenvoegsel
-      for( i = 0 ; i < antwoordserverschakersbase.geboortedatum
-      for( i = 0 ; i < antwoordserverschakersbase.wedstrijden
-      for( i = 0 ; i < antwoordserverschakersbasewins.wins
-      for( i = 0 ; i < antwoordserverschakersbaseties.ties
-      for( i = 0 ; i < antwoordserverschakersbaselosses.losses
-       opbouwString += "<tr><td>"+antwoordserverschakersbase[i].naam+"</td></tr>";
-      }
-      opbouwString += "</table>";
-      document.getElementById('schakersbase').innerHTML = opbouwString;
+	    $(document).on('click','#tabelschakers', function(){
+	      $.ajax({
+	      type:"get",
+	      url:"/geefalleschakers",
+	      success: function(result){
+	       console.log(result);
+	       ophaalfunctie(result);
+	      }
+	     });
+	    });
+	       function ophaalfunctie(antwoordserverschaken){
+	        var ant = "";
+	        for(var q = 0; q < antwoordserverschaken.length; q++){
+	            ant += antwoordserverschaken[q].voornaam + " "+ antwoordserverschaken[q].tussenvoegsel + " " + antwoordserverschaken[q].achternaam + "<br>" ;
+	        }
+	        $('#tonen').html(ant);
+	      }
+
+	</script>
+
