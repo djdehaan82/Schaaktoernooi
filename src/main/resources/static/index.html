@@ -10,23 +10,26 @@
 <button id="tabelschakers"> Toon Alle Schakers</button>
 <div id="tonen"></div>
 
-<input type="text" id="voornaam"         value= "voer je voornaam in">
-<input type="text" id="tussenvoegsel"    value="tussenvoegsel" >
-<input type="text" id="achternaam"       value="achternaam" >
-<input type="text" id="geboortedatum"    value="geboortedatum" >
-<input type="text" id="wins"             value="gewonnen" >
-<input type="text" id="ties"             value="gelijk" >
-<input type="text" id="losses"           value= "verloren">
+<input type="text" id="voor"         value= "voer je voornaam in">
+<input type="text" id="tussen"    value="tussenvoegsel" >
+<input type="text" id="achter"       value="achternaam" >
+<input type="text" id="geboorte"    value="geboortedatum" >
+<input type="text" id="win"             value="gewonnen" >
+<input type="text" id="ties2"             value="gelijk" >
+<input type="text" id="los"           value= "verloren">
 
-<input type="button" onclick= "opslaandatabase()" value=" voeg schaker toe ">
+<input type="button" onclick= "viapostversturen()" value=" voeg schaker toe ">
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-function opslaandatabase(){var dto = {};
-    dto.voornaam = $('#voornaam').val();
-    dto.tussenvoegsel = $('#tussenvoegsel').val()
-    dto.achternaam = $('#achternaam').val();
+function viapostversturen(){var dto = {};
+    dto.voornaam = $('#voor').val();
+    dto.tussenvoegsel = $('#tussen').val()
+    dto.achternaam = $('#achter').val();
+    dto.wins = $('#win').val()
+    dto.ties = $('#ties2').val()
+    dto.losses = $('#los').val()
     dto = JSON.stringify(dto);
 	$.ajax({ type: "post",
 	        url: "/toevoegen",

@@ -13,7 +13,7 @@ public class Schaker {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    public long Id; {
+    public long Id;
 
         public String voornaam;
         public String tussenvoegsel;
@@ -22,7 +22,7 @@ public class Schaker {
         public int wins;
         public int ties;
         public int losses;
-    }
+
 
 }
 

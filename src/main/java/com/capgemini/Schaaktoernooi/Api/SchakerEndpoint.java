@@ -1,6 +1,6 @@
 package com.capgemini.Schaaktoernooi.Api;
 
-import com.capgemini.Schaaktoernooi.controller.Schaakrepository
+import com.capgemini.Schaaktoernooi.controller.Schaakrepository;
 import com.capgemini.Schaaktoernooi.model.Schaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
